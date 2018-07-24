@@ -1,58 +1,47 @@
+import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * It performs different operations on student marksheet
  * 
  * @author Shubham Jain
- *
  */
 public class Marksheet {
-	double gradesOfStudents[];
-	int noOfStudents;
-
-	public Marksheet(int noOfStudents) {
-		this.noOfStudents = noOfStudents;
-		gradesOfStudents = new double[noOfStudents];
-	}
-
-	/**
-	 * It takes grade as input from user
-	 */
-	void initializeGrades() {
-		Scanner inputGrades = new Scanner(System.in);
-		for (int i = 0; i < noOfStudents; i++) {
-			System.out.println("Enter the grade for Student " + (i + 1)
-					+ " between 0 to 100");
-			gradesOfStudents[i] = inputGrades.nextDouble();
-		}
-	}
 
 	/**
 	 * It computes average of Grades
 	 * 
 	 * @return average of Grades
 	 */
-	double averageOfGrades() {
-		double averageGrades = 0;
-		for (int i = 0; i < noOfStudents; i++) {
-			averageGrades = averageGrades + gradesOfStudents[i];
+	double averageOfGrades(double gradesOfStudents[]) {
+			if (checkEnteredGrades(gradesOfStudents)) {
+				throw new AssertionError("Grades should be >= 0 and <= 100");
+			}
+			double averageGrades = 0;
+			for (int i = 0; i < gradesOfStudents.length; i++) {
+				averageGrades = averageGrades + gradesOfStudents[i];
+			}
+			averageGrades = (double) Math.round((averageGrades / gradesOfStudents.length) * 100) / 100;
+			return averageGrades;
 		}
-		return (double) averageGrades / noOfStudents;
-	}
 
 	/**
 	 * It computes maximum grade among all students
 	 * 
 	 * @return maxGrade which is maximum grade
 	 */
-	double maximumGrade() {
-		double maxGrade = gradesOfStudents[0];
-		for (int i = 1; i < noOfStudents; i++) {
-			if (maxGrade < gradesOfStudents[i]) {
-				maxGrade = gradesOfStudents[i];
+	double maximumGrade(double gradesOfStudents[]) {
+			if (checkEnteredGrades(gradesOfStudents)) {
+				throw new AssertionError("Grades should be >= 0 and <= 100");
 			}
-		}
-		return maxGrade;
+			double maxGrade = gradesOfStudents[0];
+			for (int i = 1; i < gradesOfStudents.length; i++) {
+				if (maxGrade < gradesOfStudents[i]) {
+					maxGrade = gradesOfStudents[i];
+				}
+			}
+			return maxGrade;
 	}
 
 	/**
@@ -60,14 +49,17 @@ public class Marksheet {
 	 * 
 	 * @return minGrade which is minimum grade
 	 */
-	double minimumGrade() {
-		double minGrade = gradesOfStudents[0];
-		for (int i = 1; i < noOfStudents; i++) {
-			if (minGrade > gradesOfStudents[i]) {
-				minGrade = gradesOfStudents[i];
+	double minimumGrade(double gradesOfStudents[]) {
+			if (checkEnteredGrades(gradesOfStudents)) {
+				throw new AssertionError("Grades should be >= 0 and <= 100");
 			}
-		}
-		return minGrade;
+			double minGrade = gradesOfStudents[0];
+			for (int i = 1; i < gradesOfStudents.length; i++) {
+				if (minGrade > gradesOfStudents[i]) {
+					minGrade = gradesOfStudents[i];
+				}
+			}
+			return minGrade;
 	}
 
 	/**
@@ -75,14 +67,19 @@ public class Marksheet {
 	 * 
 	 * @return number of students passed
 	 */
-	double percentOfPassedStudents() {
-		int noOfPassedStudents = 0;
-		for (int i = 0; i < noOfStudents; i++) {
-			if (gradesOfStudents[i] >= 40) {
-				noOfPassedStudents++;
+	double percentOfPassedStudents(double gradesOfStudents[]) {
+			if (checkEnteredGrades(gradesOfStudents)) {
+				throw new AssertionError("Grades should be >= 0 and <= 100");
 			}
-		}
-		return (double) noOfPassedStudents / noOfStudents * 100;
+			double percenatgeOfStudentsPassed = 0;
+			for (int i = 0; i < gradesOfStudents.length; i++) {
+				if (gradesOfStudents[i] >= 40) {
+					percenatgeOfStudentsPassed++;
+				}
+			}
+			percenatgeOfStudentsPassed = (double) Math
+					.round((percenatgeOfStudentsPassed / gradesOfStudents.length * 100) * 100) / 100;
+			return percenatgeOfStudentsPassed;
 	}
 
 	/**
@@ -90,9 +87,9 @@ public class Marksheet {
 	 * 
 	 * @return true if input is in between 0 and 100 otherwise false
 	 */
-	boolean checkEnteredGrades() {
-		for (int i = 0; i < noOfStudents; i++) {
-			if (gradesOfStudents[i] > 100 || gradesOfStudents[i] < 0) {
+	boolean checkEnteredGrades(double gradesOfStudents[]) {
+		for (int i = 0; i < gradesOfStudents.length; i++) {
+			if (gradesOfStudents[i] < 0 || gradesOfStudents[i] > 100) {
 				return true;
 			}
 		}
