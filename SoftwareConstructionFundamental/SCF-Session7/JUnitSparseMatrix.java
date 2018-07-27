@@ -4,7 +4,7 @@ import java.lang.AssertionError;
 
 public class JUnitSparseMatrix {
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = AssertionError.class)  
     public void testassertionError() {
         int array2[][] = new int[][] { {} };
         SparseMatrix obj2 = new SparseMatrix(array2);
