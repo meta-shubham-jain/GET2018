@@ -66,7 +66,7 @@ final public class SparseMatrix {
     }
 
     /**
-     * It will sort the array
+     * It will sort the 2D matrix 
      * 
      * @param array
      * @return
@@ -97,7 +97,9 @@ final public class SparseMatrix {
     }
 
     /**
-     * It will transpose the matrix
+     * It will transpose the matrix 
+     * The time complexity of transposing a matrix is O(n)
+     * where n is number of column of matrix
      * 
      * @return int[][] transpose of matrix
      */
@@ -122,7 +124,9 @@ final public class SparseMatrix {
     }
 
     /**
-     * It will check whether matrix is symmetric or not
+     * It will check whether matrix is symmetric or not 
+     * The time complexity for checking a matrix to be symmetric is O(n)
+     * where n is number of column 
      * 
      * @return boolean
      */
@@ -150,7 +154,10 @@ final public class SparseMatrix {
     }
 
     /**
-     * It will add two matrices
+     * It will add two matrices 
+     * The time complexity for addition of two matrix is O(m+n) where 
+     * m is number of columns in first matrix and n is number of
+     * columns in second matrix
      * 
      * @param matrix1
      * @param matrix2
@@ -241,14 +248,22 @@ final public class SparseMatrix {
         return resultantMatrix;
     }
 
-   public static int[][] multiplySparseMatrix(SparseMatrix matrix1,
+    /**
+     * It will multiply two matrices 
+     * The time complexity of multiplying two matrices is O(m*n) where 
+     * m is number of columns in first matrix and n is number of columns in second matrix 
+     * 
+     * @param matrix1
+     * @param matrix2
+     * @return multiplication of two matrix
+     */
+    public static int[][] multiplySparseMatrix(SparseMatrix matrix1,
             SparseMatrix matrix2) {
         if (matrix1.column != matrix2.row) {
             throw new AssertionError(
                     "No of Columns of Matrix1 should be equal to No of Rows in Matrix2 for multiplication");
         }
         int multiplyMatrix[][] = new int[matrix1.row][matrix2.column];
-
         for (int i = 0; i < matrix1.compactMatrix[0].length; i++) {
             for (int j = 0; j < matrix2.compactMatrix[0].length; j++) {
                 if (matrix1.compactMatrix[1][i] == matrix2.compactMatrix[0][j]) {
@@ -259,5 +274,4 @@ final public class SparseMatrix {
         }
         return multiplyMatrix;
     }
-
 }
