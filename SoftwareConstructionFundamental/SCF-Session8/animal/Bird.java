@@ -7,4 +7,5 @@ package animal;
  */
 abstract public class Bird extends Animal{
     final String category = "Bird";
+    int heightOfFlying;
 }

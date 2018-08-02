@@ -7,5 +7,5 @@ package animal;
  */
 abstract public class Reptile extends Animal {
     final String category = "Reptile";
-    
+    int yearsOfLiving;
 }
