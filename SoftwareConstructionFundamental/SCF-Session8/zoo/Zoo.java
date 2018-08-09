@@ -3,7 +3,6 @@ package zoo;
 import zone.*;
 import cage.*;
 import animal.*;
-
 import java.util.List;
 import java.time.zone.ZoneRulesException;
 import java.util.ArrayList;
@@ -22,45 +21,14 @@ public class Zoo {
 	static int cageId = 1;
 	static int animalId = 1;
 
-	public Zoo() {
-		init();
-	}
-
-	public void init() {
-
-		zoneList.clear();
-		animalList.clear();
-		cageList.clear();
-
-		addZone(2, "Mammal", true, false);
-		addZone(2, "Reptile", false, false);
-		addZone(3, "Bird", true, false);
-
-		addCage("Lion", 5, 1);
-		addCage("Crocodile", 2, 2);
-		addCage("Peacock", 3, 3);
-
-		addAnimal("Lion-1", 1, 20, "Lion");
-		addAnimal("Lion-2", 2, 52, "Lion");
-		addAnimal("Lion-3", 3, 102, "Lion");
-
-		addAnimal("Crocodile-1", 4, 52, "Crocodile");
-		addAnimal("Crocodile-2", 5, 102, "Crocodile");
-
-		addAnimal("Peacock-1", 6, 52, "Peacock");
-		addAnimal("Peacock-2", 7, 102, "Peacock");
-	}
-
 	/**
 	 * It will check whether animal with the given name is already exists or not
 	 * 
 	 * @param name
 	 * @return boolean
 	 */
-
 	boolean isNameUnique(String name) {
 		boolean isUnique = true;
-
 		for (int i = 0; i < animalList.size(); i++) {
 			if (animalList.get(i).getName().equalsIgnoreCase(name)) {
 				isUnique = false;
@@ -132,7 +100,6 @@ public class Zoo {
 					break;
 				}
 			}
-
 		}
 		return isCageAdded;
 	}
@@ -164,7 +131,6 @@ public class Zoo {
 					break;
 				}
 			}
-
 			if (categoryOfAnimal != null) {
 
 				/*
@@ -183,26 +149,20 @@ public class Zoo {
 							cageList.get(i).getSparseCapacity();
 							animalId++;
 							break;
-
 						case "CROCODILE":
 							animalList.add(new Crocodile(name, animalId, age, weight));
 							cageList.get(i).setSparseCapacity(cageList.get(i).getSparseCapacity() - 1);
 							animalId++;
 							break;
-
 						case "PEACOCK":
 							animalList.add(new Peacock(name, animalId, age, weight));
 							cageList.get(i).setSparseCapacity(cageList.get(i).getSparseCapacity() - 1);
 							animalId++;
 							break;
-
 						}
-
 					}
-
 				}
 			}
-
 		}
 		return isAnimalAdded;
 	}
@@ -240,7 +200,6 @@ public class Zoo {
 					break;
 				}
 			}
-
 		}
 		return isAnimalRemoved;
 	}

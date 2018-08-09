@@ -2,7 +2,7 @@ package animal;
 
 /**
  * It will define properties of Reptile
- * @author user36
+ * @author Shubham Jain
  *
  */
 abstract public class Reptile extends Animal {
