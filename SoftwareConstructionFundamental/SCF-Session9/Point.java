@@ -21,7 +21,6 @@ public class Point {
      * @param yCoordinate
      */
     Point(double xCoordinate, double yCoordinate) {
-        System.out.println(xCoordinate+" " + yCoordinate);
         if (xCoordinate > xMaxCoordinate || xCoordinate < xMinCoordinate
                 || yCoordinate > yMaxCoordinate || yCoordinate < yMinCoordinate) {
             throw new AssertionError(
