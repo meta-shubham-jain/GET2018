@@ -189,5 +189,4 @@ public class Screen {
         }
         return pointEnclosedShapes;
     }
-
 }

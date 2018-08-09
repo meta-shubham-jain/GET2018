@@ -8,19 +8,55 @@ import java.util.Date;
  */
 public interface Shape {
 
-    public enum ShapeType {
-        SQUARE, RECTANGLE, CIRCLE, TRIANGLE
-    }
+	/**
+	 * Enum for shapes
+	 * @author Shubham Jain
+	 *
+	 */
+	public enum ShapeType {
+		SQUARE, RECTANGLE, CIRCLE, TRIANGLE
+	}
 
-    double getArea();
+	/**
+	 * It will return area of shape
+	 * 
+	 * @return
+	 */
+	double getArea();
 
-    double getPerimeter();
+	/**
+	 * It will return Perimeter of shape
+	 * 
+	 * @return
+	 */
+	double getPerimeter();
 
-    Point getOrigin();
+	/**
+	 * It will return origin of shape
+	 * 
+	 * @return
+	 */
+	Point getOrigin();
 
-    ShapeType getShape();
+	/**
+	 * It will return type of shape
+	 * 
+	 * @return
+	 */
+	ShapeType getShape();
 
-    boolean isPointEnclosed(Point isPointEnclosed);
+	/**
+	 * It will return whether point is enclosed or not in shape
+	 * 
+	 * @param isPointEnclosed
+	 * @return
+	 */
+	boolean isPointEnclosed(Point isPointEnclosed);
 
-    Date getTimeStamp();
+	/**
+	 * It will return time and date of creation
+	 * 
+	 * @return
+	 */
+	Date getTimeStamp();
 }

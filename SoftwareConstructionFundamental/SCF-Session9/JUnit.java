@@ -92,4 +92,17 @@ public class JUnit {
         sortedShape.add(Screen.shapesList.get(3));
         assertEquals(sortedShape, screen.isPointEnclosed(new Point(45, 203)));
     }
+
+    @Test
+    public void testPointOutOfScreenException() {
+        Screen screen = new Screen();
+        try {
+            screen.addShape(Shape.ShapeType.CIRCLE, new Point(20, 35),
+                    new ArrayList<>(Arrays.asList(5d)));
+            screen.addShape(Shape.ShapeType.RECTANGLE, new Point(20, 35),
+                    new ArrayList<>(Arrays.asList(5d,6d)));
+        } catch (Exception ex) {
+            assertEquals("Shape is Out of Screen", ex.getMessage());
+        }
+    }
 }

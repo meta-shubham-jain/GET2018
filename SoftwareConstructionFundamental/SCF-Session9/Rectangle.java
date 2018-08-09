@@ -19,11 +19,11 @@ public class Rectangle implements Shape{
 		this.width = width;
 		this.origin = origin;
 		this.timeStamp = new Date();
-		
+		Point point = null;
 		/**
 		 * Checking if shape lies on the screen
 		 */
-		if ((origin.getXCoordinate() + width) > 1080 || (origin.getYCoordinate() + height) > 720) {
+		if (!(point.isPointOnScreen((origin.getXCoordinate() + width),(origin.getYCoordinate() + height)))) {
 			throw new AssertionError("Width or Height is out of Screen in Rectangle");
 		}
 	}

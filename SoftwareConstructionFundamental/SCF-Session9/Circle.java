@@ -18,14 +18,15 @@ public class Circle implements Shape {
         this.radius = radius;
         this.origin = origin;
         this.timeStamp = timeStamp;
-
+        Point point = null;
         /**
          * Checking if shape lies on the screen
          */
-        if (origin.getXCoordinate() + radius > 1080
-                || origin.getXCoordinate() - radius < 0
-                || origin.getYCoordinate() - radius < 0
-                || origin.getYCoordinate() + radius > 720) {
+        if (!(point.isPointOnScreen((origin.getXCoordinate() + radius),
+                (origin.getYCoordinate() + radius)))
+                || !(point.isPointLiesOnScreen(
+                        (origin.getXCoordinate() - radius),
+                        (origin.getYCoordinate() - radius)))) {
             throw new AssertionError("Shape is Out of Screen");
         }
     }
@@ -51,10 +52,10 @@ public class Circle implements Shape {
         double valueOfX1;
         double valueOfX2;
         double valueOfY;
-        double A;
-        double B;
-        double C;
-        double M = origin.getYCoordinate() / origin.getXCoordinate();
+        double cofficientOfX2;
+        double coefficientOfX;
+        double coefficientOfConstant;
+        double slopeOfLine = origin.getYCoordinate() / origin.getXCoordinate();
 
         /*
          * y = mx so we will substitute the value of y to circle equation (x-h)2
@@ -63,27 +64,27 @@ public class Circle implements Shape {
          * y This equation is similar to Ax2 + Bx + C = 0 so we can easily
          * calculate roots of x by formula of Quadratic Equation
          */
-        A = (Math.pow(M, 2) + 1);
-        B = (-2 * (M * origin.getYCoordinate() + origin.getXCoordinate()));
-        C = (Math.pow(origin.getYCoordinate(), 2)
+        cofficientOfX2 = (Math.pow(slopeOfLine, 2) + 1);
+        coefficientOfX = (-2 * (slopeOfLine * origin.getYCoordinate() + origin
+                .getXCoordinate()));
+        coefficientOfConstant = (Math.pow(origin.getYCoordinate(), 2)
                 + Math.pow(origin.getXCoordinate(), 2) - Math.pow(radius, 2));
-        double underRoot = Math.sqrt((Math.pow(B, 2) - 4 * A * C));
-        valueOfX1 = (-B + underRoot) / (2 * A);
-        valueOfX2 = (-B - underRoot) / (2 * A);
-
+        double underRoot = Math.sqrt((Math.pow(coefficientOfX, 2) - 4
+                * cofficientOfX2 * coefficientOfConstant));
+        valueOfX1 = (-coefficientOfX + underRoot) / (2 * cofficientOfX2);
+        valueOfX2 = (-coefficientOfX - underRoot) / (2 * cofficientOfX2);
         /*
          * We will get two coordinates of x so we will select only that
          * coordinate whose value is less than the x coordinate of radius
          */
-        if (valueOfX1 <= origin.getXCoordinate() && valueOfX2 <= 1920) {
-            valueOfY = M * valueOfX1;
+        if (valueOfX1 <= origin.getXCoordinate() && valueOfX2 <= 1080) {
+            valueOfY = slopeOfLine * valueOfX1;
             return new Point(valueOfX1, valueOfY);
-        } else if (valueOfX2 <= origin.getXCoordinate() && valueOfX1 <= 1920) {
-            valueOfY = M * valueOfX2;
+        } else if (valueOfX2 <= origin.getXCoordinate() && valueOfX1 <= 1080) {
+            valueOfY = slopeOfLine * valueOfX2;
             return new Point(valueOfX2, valueOfY);
         }
         return null;
-
     }
 
     @Override

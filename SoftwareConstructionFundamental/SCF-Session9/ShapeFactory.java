@@ -27,11 +27,8 @@ public class ShapeFactory {
             default:
                 return null;
             }
-
         } catch (Exception e) {
             throw new AssertionError();
         }
-
     }
-
 }
