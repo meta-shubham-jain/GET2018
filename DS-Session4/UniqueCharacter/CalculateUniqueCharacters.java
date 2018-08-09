@@ -9,7 +9,6 @@ import java.util.Map;
  *
  */
 public class CalculateUniqueCharacters {
-	Map<Character, Integer> hashMap = new HashMap<>();
 	Map<String, Integer> cache = new HashMap<String, Integer>();
 
 	/**
@@ -20,10 +19,10 @@ public class CalculateUniqueCharacters {
 	 * @return
 	 */
 	int noOfUniqueCharacters(String input) {
-		hashMap.clear();
 		if (input == null) {
 			throw new NullPointerException("String is Empty");
 		}
+		Map<Character, Integer> hashMap = new HashMap<>();
 		input = input.trim();
 		if (cache.containsKey(input)) {
 			return cache.get(input);

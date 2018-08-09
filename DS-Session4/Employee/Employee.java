@@ -4,7 +4,7 @@
  * @author Shubham Jain
  *
  */
-public class Employee {
+public class Employee implements Comparable<Employee> {
 	private int employeeId;
 	private String name;
 	private String address;
@@ -41,4 +41,9 @@ public class Employee {
 	public String getAddress() {
 		return address;
 	}
+
+    @Override
+    public int compareTo(Employee employee) {
+        return employeeId - employee.getEmployeeId();
+    }
 }

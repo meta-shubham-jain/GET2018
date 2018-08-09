@@ -8,10 +8,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class EmployeeCollection {
-    List<Employee> employeeList = new ArrayList<>();
-    Set<Integer> idSet = new HashSet<>();
+    private List<Employee> employeeList = new ArrayList<>();
+    private Set<Integer> idSet = new HashSet<>();
 
     boolean addEmployeeInList(int employeeId, String name, String address) {
+        if (name == null || address == null) {
+            throw new NullPointerException("Name or Address can't be null");
+        }
         Employee employee = new Employee(employeeId, name, address);
         if (idSet.add(employeeId)) {
             employeeList.add(new Employee(employeeId, name, address));
@@ -22,30 +25,25 @@ public class EmployeeCollection {
 
     /**
      * Sort Employee List according to Employee Id
+     * 
      * @return
      */
     List sortNaturalOrder() {
-        Collections.sort(employeeList, compareId);
-        return employeeList;
+        List<Employee> sortbyIdList = new ArrayList<Employee>(employeeList);
+        Collections.sort(sortbyIdList);
+        return sortbyIdList;
     }
 
     /**
-     * Sort Employee List according to Employee Name 
+     * Sort Employee List according to Employee Name
+     * 
      * @return
      */
     List sortByName() {
-        Collections.sort(employeeList, compareName);
-        return employeeList;
+        List<Employee> sortByNameList = new ArrayList<Employee>(employeeList);
+        Collections.sort(sortByNameList, compareName);
+        return sortByNameList;
     }
-
-    /**
-     * Comparator to sort list according to name of employee
-     */
-    Comparator<Employee> compareId = new Comparator<Employee>() {
-        public int compare(Employee emp1, Employee emp2) {
-            return emp1.getEmployeeId() - emp2.getEmployeeId();
-        }
-    };
 
     /**
      * Comparator to sort list according to name of employee
