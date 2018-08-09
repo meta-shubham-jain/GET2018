@@ -25,7 +25,7 @@ public class QueueUsingLinkedList {
             front = newNode;
             rear = newNode;
         } else {
-            rear.setLink(newNode);
+            rear.setNext(newNode);
             rear = newNode;
         }
     }
@@ -45,7 +45,7 @@ public class QueueUsingLinkedList {
             rear = null;
         } else {
             value = front.getData();
-            front = front.getLink();
+            front = front.getNext();
         }
         return value;
     }

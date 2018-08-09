@@ -22,7 +22,7 @@ public class StackUsingLinkedList implements Stack {
         if (top == null) {
             top = newNode;
         } else {
-            newNode.setLink(top);
+            newNode.setNext(top);
             top = newNode;
         }
     }
@@ -37,7 +37,7 @@ public class StackUsingLinkedList implements Stack {
             throw new ArrayIndexOutOfBoundsException("Underflow");
         } else {
             Node pointer = top;
-            top = pointer.getLink();
+            top = pointer.getNext();
             data = pointer.getData();
             pointer = null;
         }

@@ -1,21 +1,21 @@
 /**
- * It is defining a Node which has data and a link which points to other node
+ * It is defining a Node which has data and a next which points to other node
  * 
  * @author Shubham
  *
  */
 public class Node {
     private int data;
-    private Node link;
+    private Node next;
 
     public Node() {
         data = 0;
-        link = null;
+        next = null;
     }
 
-    public Node(int data, Node link) {
+    public Node(int data, Node next) {
         this.data = data;
-        this.link = link;
+        this.next = next;
     }
 
     /**
@@ -30,10 +30,10 @@ public class Node {
     /**
      * Inserting address of other node
      * 
-     * @param link
+     * @param next
      */
-    public void setLink(Node link) {
-        this.link = link;
+    public void setNext(Node next) {
+        this.next = next;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Node {
      * 
      * @return
      */
-    public Node getLink() {
-        return link;
+    public Node getNext() {
+        return next;
     }
 }
