@@ -123,17 +123,51 @@ VALUES
     (18, "BoysDress.jpg"),
     (19, "ShortSkirtDress.jpg"),
     (19, "LongSkirtDress.jpg");
-    
 
+#Insert data into state
+INSERT INTO state(state_name)
+VALUES 
+    ("Rajasthan"),
+    ("Karnataka"),
+    ("Goa"),
+    ("UP");
+
+#Insert data into city
+INSERT INTO city(city_name,state_name)
+VALUES
+    ("Sikar","Rajasthan"),
+    ("Jodhpur","Rajasthan"),
+    ("Jaipur","Rajasthan"),
+    ("Banglore","Karnataka"),
+    ("Panaji","Goa"),
+    ("Bareilly","UP"),
+    ("Lucknow","UP");
+
+#Insert data into zip_code
+INSERT INTO zip_code(pincode,city_name,area_name)
+VALUES
+    ("332001","Sikar","Station"),
+    ("342001","Sikar","Tabela"),
+    ("323001","Sikar","BusStand"),
+    ("321001","Jodhpur","Station"),
+    ("332010","Jodhpur","Tabela"),
+    ("332110","Jodhpur","BusStand"),
+    ("343001","Jaipur","Station"),
+    ("343002","Jaipur","Tabela"),
+    ("343003","Jaipur","BusStand"),
+    ("352001","Bareilly","Station"),
+    ("352002","Lucknow","Station"),
+    ("362002","Panaji","Station");
+    
 #Insert data into address    
 INSERT INTO address(house_no,street_no,phone_no,shopper_id,pincode)
 VALUES
-    ("1",1,8094011142,1,"332001"),
-    ("2",1,7725962262,1,"342001"),
-    ("3",3,1234567890,2,"323001"),
-    ("1",5,9876543210,3,"321001"),
-    ("2",1,1357924680,4,"332010"),
-    ("1",3,1234567890,5,"332110");
+    ("1",1,"8094011142",1,"332001"),
+    ("2",1,"7725962262",1,"342001"),
+    ("3",3,"1234567890",2,"323001"),
+    ("1",5,"9876543210",3,"321001"),
+    ("2",1,"1357924680",4,"332010"),
+    ("1",3,"1234567890",5,"332110");    
 
 #Insert data into order_details
 INSERT INTO order_details(shopper_id,total_price,date_of_order,address_id)
@@ -150,7 +184,6 @@ VALUES
     (3,4000,"2018-07-09",4),
     (4,5000,"2018-07-12",5),
     (5,10000,"2018-06-23",6);
-
 
 #Insert data into ordered_product
 INSERT INTO ordered_product(order_id,product_id,total_price,quantity,order_status)

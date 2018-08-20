@@ -22,16 +22,37 @@ CREATE TABLE admin(
              sex CHAR(1) CHECK(sex IN ('M','F')),
              PRIMARY KEY(admin_id)
  );
-        
+
+CREATE TABLE state(
+             state_name VARCHAR(20),
+             PRIMARY KEY(state_name)
+             );
+
+CREATE TABLE city(
+             city_name VARCHAR(20),
+             state_name VARCHAR(20) NOT NULL,
+             PRIMARY KEY(city_name),
+             FOREIGN KEY(state_name) REFERENCES state(state_name)
+             );
+
+CREATE TABLE zip_code(
+             pincode VARCHAR(10),
+             city_name VARCHAR(20) NOT NULL,
+             area_name VARCHAR(20) NOT NULL,
+             PRIMARY KEY(pincode),
+             FOREIGN KEY(city_name) REFERENCES city(city_name)
+             );
+             
 CREATE TABLE address(
-             address_id INT UNIQUE NOT NULL AUTO_INCREMENT, 
+             address_id INT AUTO_INCREMENT, 
              house_no VARCHAR(10), 
              street_no INT, 
              phone_no VARCHAR(12), 
              shopper_id INT,
-             pincode VARCHAR(10), 
-             PRIMARY KEY(address_id, pincode),
-             FOREIGN KEY(shopper_id) REFERENCES shopper(shopper_id)
+             pincode VARCHAR(10) NOT NULL, 
+             PRIMARY KEY(address_id),
+             FOREIGN KEY(shopper_id) REFERENCES shopper(shopper_id),
+             FOREIGN KEY(pincode) REFERENCES zip_code(pincode)
  );
 
 CREATE TABLE product(
