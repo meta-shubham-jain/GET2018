@@ -1,0 +1,25 @@
+a {
+	text-decoration: none;
+	font-style: italic;
+	font-size: 25px;
+	padding-left: 30px;
+	color: purple;
+}
+
+.button-link {
+	border: black;
+}
+
+.add_employee {
+	padding-top: 20px;
+}
+
+.header {
+	color: purple;
+	font-size: 30px;;
+}
+
+.home {
+	color: purple;
+	font-size: 30px;
+}
