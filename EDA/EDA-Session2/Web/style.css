@@ -1,0 +1,13 @@
+.header a {
+	color : green;
+	text-decoration : none;
+	padding : 2px;
+}
+.table-text {
+	color : green;
+}
+
+.button {
+	background: white;
+	color: green;
+}

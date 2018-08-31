@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<title>SignUp</title>
+	<link rel = "shortcut icon" href = "images/html.png"/>
+	<link rel = "stylesheet" href="style.css">
+	<script type="text/javascript" src="validation.js"></script>
+</head>
+<body align="center">
+	<div class="header">		
+		<table align="center" width=50%>	
+			<tr>
+				<td align="left" width="40%">
+					<img src ="images/html.png" width ="50px">
+				</td>
+				<td align="right">
+					<a href="index.html">Home</a>
+					<a href="about.html">About</a>
+					<a href="product.html">Product</a>
+					<a href="gallery.html">Gallery</a>
+					<a href="contact.html">Contact</a>
+					<a href="registration.html">SignUp</a>
+					<a href="login.html">Login</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<hr width="85%">
+	<div class="table-text">
+		<h1>Registration</h1>
+		<form action="login.html" method="" name="signupform" onsubmit="return validate()">
+			<table align="center" cellspacing="10">
+				<tr align="left">
+					<td width="50px">First Name</td>
+					<td>
+						<input type="text" name="first_name" placeholder="Enter First Name" required>
+					</td>
+				</tr>
+				<tr align="left">
+					<td>Last Name</td>
+					<td>
+						<input type="text" name="last_name" placeholder="Enter Last Name" required>
+					</td>
+				</tr>
+				<tr align="left">
+					<td>Email</td>
+					<td>
+						<input type="text" name="email" placeholder="Enter Email Id" required>
+						<span id="email"></span>
+					</td>
+				</tr>
+				<tr align="left">
+					<td>Password</td>
+					<td>
+						<input type="password" name="password" placeholder="Enter Password" onchange = "clearConfirmPassword()" required>
+					</td>
+				</tr>
+				<tr align="left">
+					<td>Confirm Password</td>
+					<td>
+						<input type="password" name="confirm_password" placeholder="Enter Confirm Password" onkeyup="checkConfirmPassword()" required>
+						<span id = "checkpassword"></span>
+					</td>
+				</tr>
+				<tr align="left">
+					<td width="30">Contact Number</td>
+					<td><input type="text" name="contact" placeholder="Enter Contact Number" required></td>
+				</tr>
+				<tr align="left">
+					<td>Company/Institution</td>
+					<td>
+						<select name="company">
+							 <option value="">--Select--</option>
+							<option value="metacube">Metacube</option>
+							<option value="google">Google</option>
+							<option value="facebook">Facebook</option>
+							<option value="tcs">TCS</option>
+							<option value="wipro">Wipro</option>
+						</select> 
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
+						<input type="submit" name="signup" value="SignUp" onsubmit="return validate()" class="button" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
