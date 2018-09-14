@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Employees</title>
+</head>
+<body>
+	<h1>Search Employees</h1>
+	<form th:action="@{search}">
+		<input type="text" name="firstName" placeholder="Enter FirstName"/>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="text" name="lastName" placeholder="Enter Last Name"/>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="submit" value="search" />
+	</form>
+	<div th:if="${not #lists.isEmpty(employees)}">
+		<h2>All EMployees</h2>
+		<table>
+			<tr>
+				<th>EmpCode</th>
+				<th>FirstName</th>
+				<th>MiddleName</th>
+				<th>LastName</th>
+				<th>DOB</th>
+				<th>Gender</th>
+				<th>Email</th>
+				<th>PrimaryContact</th>
+				<th>SecondaryContact</th>
+				<th>SkypeId</th>
+			</tr>
+			<tr th:each="employee : ${employees}">
+				<td th:text="*{employee.empCode}">EmpCode</td>
+				<td th:text="*{employee.firstName}">FirstName</td>
+				<td th:text="*{employee.middleName}">MiddleName</td>
+				<td th:text="*{employee.lastName}">LastName</td>
+				<td th:text="*{employee.dob}">DOB</td>
+				<td th:text="*{employee.gender}">Gender</td>
+				<td th:text="*{employee.email}">Email</td>
+				<td th:text="*{employee.primaryContact}">PrimaryContact</td>
+				<td th:text="*{employee.secondaryContact}">SecondaryContact</td>
+				<td th:text="*{employee.skypeId}">SkypeId</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
