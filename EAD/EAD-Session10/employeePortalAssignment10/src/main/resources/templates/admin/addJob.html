@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Add Job</title>
+</head>
+<body>
+<div style="text-align:center">
+	<a th:href="@{dashboard}">Home </a>
+	<a th:href="@{addEmployee}">Add Employee </a>
+	<a th:href="@{addProject}">Add project</a>
+	<a th:href="@{addJob}">Add Job </a>
+	<a th:href="@{addSkills}">Add Skills </a>
+	<a th:href="@{allEmployees}">Show Employees </a>
+	<a th:href="@{allProjects}">Show Projects </a>
+	<a th:href="@{allSkills}">Show Skills Master </a>
+	<a th:href="@{allJobs}">Show JObs Master </a>
+	<a th:href="@{search}">Search Employee </a>
+	<a th:href="@{logout}">Logout</a>
+</div>	
+<center>
+<h1>Add Job</h1>
+<form th:object="${jobTitle}" th:action="@{addJob}" method = "POST">
+<table width = "50%">
+	<tr>
+		<td> <input type="hidden" th:field="*{jobCode}"> </td></tr>
+	<tr>
+	<td>Job Title</td><td> <input type="text" th:field="*{jobTitle}"></td>
+	<td th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}"></td>
+	</tr>
+	 <tr colspan = "2"><td><input type="submit" value="submit"></td></tr>
+</table>
+</form>
+</center>
+</body>
+</html>

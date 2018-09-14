@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>projects</title>
+</head>
+<body>
+<div style="text-align:center">
+	<a th:href="@{dashboard}">Home</a>
+	<a th:href="@{addEmployee}">Add Employee </a>
+	<a th:href="@{addProject}">Add project</a>
+	<a th:href="@{addJob}">Add Job </a>
+	<a th:href="@{addSkills}">Add Skills </a>
+	<a th:href="@{allEmployees}">Show Employees </a>
+	<a th:href="@{allProjects}">Show Projects </a>
+	<a th:href="@{allSkills}">Show Skills Master </a>
+	<a th:href="@{allJobs}">Show JObs Master </a>
+	<a th:href="@{search}">Search Employee </a>
+	<a th:href="@{logout}">Logout</a>
+	</div>
+	<h2>All jobs</h2>
+	<div th:if="${not #lists.isEmpty(jobs)}">
+		<table>
+			<tr>
+				<th>Job Code</th>
+				<th>Job Title</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr th:each="job : ${jobs}">
+				<td th:text="*{job.jobCode}">Job Code</td>
+				<td th:text="*{job.jobTitle}">Job Title</td>
+				<td><a th:href="${'editJob?id=' + job.jobCode}"
+					class="btn btn-default">Edit</a></td>
+				<td><a th:href="${'deleteJob?id=' + job.jobCode}"
+					class="btn btn-danger">Delete</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
