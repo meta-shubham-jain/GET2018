@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Add Job Details</title>
+	</head>
+	<body>
+		<div style="text-align:center">
+			<a th:href="@{dashboard}">Home </a>
+			<a th:href="@{addEmployee}">Add Employee </a>
+			<a th:href="@{addProject}">Add project</a>
+			<a th:href="@{addJob}">Add Job </a>
+			<a th:href="@{addSkills}">Add Skills </a>
+			<a th:href="@{addJobDetails}">Add JobDetails </a>
+			<a th:href="@{allEmployees}">Show Employees </a>
+			<a th:href="@{allProjects}">Show Projects </a>
+			<a th:href="@{allSkills}">Show Skills Master </a>
+			<a th:href="@{allJobs}">Show JObs Master </a>
+			<a th:href="@{search}">Search Employee </a>
+			<a th:href="@{searchBySkills}">Search By Skills</a>
+			<a th:href="@{searchByProject}">Search By Project</a>
+			<a th:href="@{logout}">Logout</a>
+		</div>
+		
+		<center>
+			<h1>Add Job Details</h1>
+			<form name="addJobDetailsForm" method="post" th:object="${jobDetails}"
+				th:action="@{addJobDetails}">
+				<table>
+					<tr>
+						<td><input type="hidden" th:field="*{jobDetailId}" th:value="*{jobDetailId}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Employee:</td>
+						<td><select th:field="*{empCode}">
+									<option th:each="employee : ${employees}" th:value="${employee.empCode}"
+										th:utext="${employee.firstName}" />
+						</select></td>
+					</tr>
+					<tr>
+						<td>Date Of Joining:</td>
+						<td><input type="Date" th:field="*{dateOfJoining}"
+							th:value="*{dateOfJoining}" id="dateOfJoining" name="dateOfJoining" /></td>
+					</tr>
+					<tr>
+						<td>Total Experience:</td>
+						<td><input type="number" th:field="*{totalExp}" /></td>
+					</tr>
+					<tr>
+						<td>Job</td>
+						<td>
+							<select th:field="*{jobCode}" >
+								<option th:each="jobTitle : ${jobTitleList}" th:value="${jobTitle.jobCode}"
+											th:utext="${jobTitle.jobTitle}" />
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Reporting Manager:</td>
+						<td><select th:field="*{reportingManager}" >
+									<option th:each="employee : ${employees}" th:value="${employee.empCode}"
+										th:utext="${employee.firstName}" />
+						</select></td>
+					</tr>
+					<tr>
+						<td>Team Lead:</td>
+						<td><select th:field="*{teamLead}" >
+									<option th:each="employee : ${employees}" th:value="${employee.empCode}"
+										th:utext="${employee.firstName}" />
+						</select></td>
+					</tr>
+					<tr>
+						<td>Current Project</td>
+						<td><select th:field="*{projectId}" >
+									<option th:each="project : ${projectList}" th:value="${project.projectId}"
+										th:utext="${project.description}" />
+						</select></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="submit" /></td>
+					</tr>
+				</table>
+			</form>
+		</center>
+	</body>
+</html>

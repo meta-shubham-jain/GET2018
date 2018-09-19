@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>projects</title>
+</head>
+<body>
+<div style="text-align:center">
+			<a th:href="@{dashboard}">Home </a>
+			<a th:href="@{addEmployee}">Add Employee </a>
+			<a th:href="@{addProject}">Add project</a>
+			<a th:href="@{addJob}">Add Job </a>
+			<a th:href="@{addSkills}">Add Skills </a>
+			<a th:href="@{addJobDetails}">Add JobDetails </a>
+			<a th:href="@{allEmployees}">Show Employees </a>
+			<a th:href="@{allProjects}">Show Projects </a>
+			<a th:href="@{allSkills}">Show Skills Master </a>
+			<a th:href="@{allJobs}">Show JObs Master </a>
+			<a th:href="@{search}">Search Employee </a>
+			<a th:href="@{searchBySkills}">Search By Skills</a>
+			<a th:href="@{searchByProject}">Search By Project</a>
+			<a th:href="@{logout}">Logout</a>
+		</div>	<h2>All Skills</h2>
+	<div th:if="${not #lists.isEmpty(skills)}">
+		<table>
+			<tr>
+				<th>Skill Id</th>
+				<th>Skill Name</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr th:each="skill : ${skills}">
+				<td th:text="*{skill.skillId}">Skill ID</td>
+				<td th:text="*{skill.skillName}">Skill Name</td>
+				<td><a th:href="${'editSkills?id=' + skill.skillId}"
+					class="btn btn-default">Edit</a></td>
+				<td><a th:href="${'deleteSkill?id=' + skill.skillId}"
+					class="btn btn-danger">Delete</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
