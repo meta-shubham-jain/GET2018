@@ -1,0 +1,56 @@
+#container {
+	width: 200px;
+	height: 200px;
+	margin-left: 40%;
+	margin-top: 20%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.block {
+	top: 0;
+    left:0;
+	width: 100px;
+    height: 100px;
+    animation-timing-function: ease-in-out;
+    position: absolute;
+    animation-name: animation;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
+#container :nth-child(1) {
+	background-color: tomato;
+}
+
+#container :nth-child(2) {
+	background-color: orange;
+	animation-delay: -0.5s;
+}
+
+#container :nth-child(3) {
+	background-color: green;
+	animation-delay: -1s;
+}
+
+#container :nth-child(4) {
+	background-color: dodgerblue;
+	animation-delay: -1.5s;
+}
+
+@keyframes animation{
+	0% {
+    		transform: translate(0%, 0%)
+       }
+    25% {
+           transform: translate(0%, 100%)
+    	}
+    50% {
+           transform: translate(100%, 100%)
+       }
+    75% {
+           transform: translate(100%, 0%)
+       }
+}
