@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head lang="en">
+	<title>Employees</title>
+	</head>
+	<body>
+		<div style="text-align:center">
+			<a th:href="@{dashboard}">Home </a>
+			<a th:href="@{addEmployee}">Add Employee </a>
+			<a th:href="@{addProject}">Add project</a>
+			<a th:href="@{addJob}">Add Job </a>
+			<a th:href="@{addSkills}">Add Skills </a>
+			<a th:href="@{addJobDetails}">Add JobDetails </a>
+			<a th:href="@{allEmployees}">Show Employees </a>
+			<a th:href="@{allProjects}">Show Projects </a>
+			<a th:href="@{allSkills}">Show Skills Master </a>
+			<a th:href="@{allJobs}">Show JObs Master </a>
+			<a th:href="@{search}">Search Employee </a>
+			<a th:href="@{searchBySkills}">Search By Skills</a>
+			<a th:href="@{searchByProject}">Search By Project</a>
+			<a th:href="@{logout}">Logout</a>
+		</div>	
+			<div th:if="${not #lists.isEmpty(employees)}">
+			<h2>All Employees</h2>
+			<table>
+				<tr>
+					<th>EmpCode</th>
+					<th>FirstName</th>
+					<th>MiddleName</th>
+					<th>LastName</th>
+					<th>DOB</th>
+					<th>Gender</th>
+					<th>Email</th>
+					<th>PrimaryContact</th>
+					<th>SkypeId</th>
+				</tr>
+				<tr th:each="employee : ${employees}">
+					<td th:text="*{employee.empCode}">EmpCode</td>
+					<td th:text="*{employee.firstName}">FirstName</td>
+					<td th:text="*{employee.middleName}">MiddleName</td>
+					<td th:text="*{employee.lastName}">LastName</td>
+					<td th:text="*{employee.dob}">DOB</td>
+					<td th:text="*{employee.gender}">Gender</td>
+					<td th:text="*{employee.email}">Email</td>
+					<td th:text="*{employee.primaryContact}">PrimaryContact</td>
+					<td th:text="*{employee.skypeId}">SkypeId</td>
+					<td><a th:href="${'editEmployee?id=' + employee.empCode}"
+						class="btn btn-default">Edit</a></td>
+					<td><a th:href="${'deleteEmployee?id=' + employee.empCode}"
+						class="btn btn-danger">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
