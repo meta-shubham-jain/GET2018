@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Employee Login</title>
+	</head>
+	<body>
+		<div class="row">
+			<div>
+				<center>
+					<h1>Login page</h1>
+					<form th:action="@{/Login}" method="post">
+						<div>
+							<label for="username">Email</label>: <input type="text" id="username"
+								name="username" class="form-control" autofocus="autofocus"
+								placeholder="Enter your email" />
+						</div>
+						<div>
+							<label for="password">Password</label>: <input type="password"
+								id="password" name="password" class="form-control"
+								placeholder="Enter your Password" />
+						</div>
+						<div>
+							<div>
+								<div>
+									<input type="submit" name="login-submit" id="login-submit"
+										class="form-control btn btn-info" value="Log In" />
+								</div>
+							</div>
+						</div>
+						<div>
+							<div>
+								<span th:if="${error != null}" class="error">!! Wrong user
+									or password !!</span>
+							</div>
+						</div>
+					</form>
+				</center>
+			</div>
+		</div>
+	</body>
+</html>
